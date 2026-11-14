@@ -1,0 +1,63 @@
+{
+  "info": {
+    "name": "Inventaris Ruangan API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET - Semua Item",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/items"
+      }
+    },
+    {
+      "name": "POST - Tambah Item",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"item_name\": \"Proyektor\",\n  \"quantity\": 2,\n  \"room\": \"Lab SI\",\n  \"condition\": \"Baik\"\n}"
+        },
+        "url": "{{baseUrl}}/api/items"
+      }
+    },
+    {
+      "name": "GET - Detail Item",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/items/{{itemId}}"
+      }
+    },
+    {
+      "name": "PUT - Update Item",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"item_name\": \"Proyektor\",\n  \"quantity\": 3,\n  \"room\": \"Lab SI\",\n  \"condition\": \"Baik\"\n}"
+        },
+        "url": "{{baseUrl}}/api/items/{{itemId}}"
+      }
+    },
+    {
+      "name": "DELETE - Hapus Item",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/api/items/{{itemId}}"
+      }
+    }
+  ]
+}
