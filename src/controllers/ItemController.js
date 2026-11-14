@@ -1,0 +1,6 @@
+import Item from "../models/Item.js";
+export const getAllItems = async (req,res,next) => { try { const data=await Item.find().sort({createdAt:-1}); res.json({success:true,data}); } catch(e){next(e);} };
+export const getItemById = async (req,res,next) => { try { const data=await Item.findById(req.params.id); if(!data) return res.status(404).json({success:false,message:"Item tidak ditemukan"}); res.json({success:true,data}); } catch(e){next(e);} };
+export const createItem = async (req,res,next) => { try { const data=await Item.create(req.body); res.status(201).json({success:true,message:"Item berhasil ditambahkan",data}); } catch(e){next(e);} };
+export const updateItem = async (req,res,next) => { try { const data=await Item.findByIdAndUpdate(req.params.id,req.body,{new:true,runValidators:true}); if(!data) return res.status(404).json({success:false,message:"Item tidak ditemukan"}); res.json({success:true,message:"Item berhasil diperbarui",data}); } catch(e){next(e);} };
+export const deleteItem = async (req,res,next) => { try { const data=await Item.findByIdAndDelete(req.params.id); if(!data) return res.status(404).json({success:false,message:"Item tidak ditemukan"}); res.json({success:true,message:"Item berhasil dihapus",data}); } catch(e){next(e);} };
